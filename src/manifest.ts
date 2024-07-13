@@ -142,6 +142,7 @@ export interface ReleaserConfig {
   skipSnapshot?: boolean;
   // Manifest only
   excludePaths?: string[];
+  additionalPaths?: string[];
 }
 
 export interface CandidateReleasePullRequest {
@@ -194,6 +195,7 @@ interface ReleaserConfigJson {
   'initial-version'?: string;
   'exclude-paths'?: string[]; // manifest-only
   'date-format'?: string;
+  'additional-paths'?: string[]; // manifest-only
 }
 
 export interface ManifestOptions {
@@ -1426,6 +1428,7 @@ function extractReleaserConfig(
     initialVersion: config['initial-version'],
     excludePaths: config['exclude-paths'],
     dateFormat: config['date-format'],
+    additionalPaths: config['additional-paths'],
   };
 }
 
@@ -1792,6 +1795,8 @@ function mergeReleaserConfig(
     extraLabels: pathConfig.extraLabels ?? defaultConfig.extraLabels,
     excludePaths: pathConfig.excludePaths ?? defaultConfig.excludePaths,
     dateFormat: pathConfig.dateFormat ?? defaultConfig.dateFormat,
+    additionalPaths:
+      pathConfig.additionalPaths ?? defaultConfig.additionalPaths,
   };
 }
 
