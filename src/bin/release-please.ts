@@ -309,7 +309,7 @@ function pullRequestStrategyOptions(yargs: yargs.Argv): yargs.Argv {
       type: 'string',
     })
     .option('extra-files', {
-      describe: 'extra files for the strategy to update',
+      describe: 'extra files for the strategy to consider',
       type: 'string',
       coerce(arg?: string) {
         if (arg) {
